@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+{{loc['name']}}  
+{% endblock %}
+
+{% block main %}
+<h1 class="margin_left">{{loc['name']}}</h1>
+<div class="center div_medium">
+  <img src="{{loc['pic']}}", class="pic">
+</div>
+<br>
+<div class="center div_medium" id="{{loc['name']}}"></div>
+<br>
+<div class="margin_medium">
+  <p>{{loc['intro']}}</p>
+<script>
+    map = new google.maps.Map(document.getElementById("{{loc['name']}}"), {
+        zoom: 19,
+        center: new google.maps.LatLng({{ loc["lat"] }}, {{ loc["lng"] }}),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      });
+      marker = new google.maps.Marker({
+        position: { lat: {{ loc["lat"] }}, lng: {{ loc["lng"] }} },
+        url: '/',
+        map: map
+      });
+  </script>
+{% endblock %}

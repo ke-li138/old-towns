@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Old Towns  
+{% endblock %}
+
+{% block main %}
+  <h1 class="margin_left">Old Towns</h1>
+  <hr>
+    <div id="map_center" class="div_large center"></div>
+  <hr>
+  {% for loc in locs %}
+    <div class="gather_div_small margin_left">
+      <div class="div_small margin_left">
+        <img src="{{loc['pic']}}" class="pic">
+      </div>
+      <div class="pic_text margin_left large">
+        <form action="/OldTowns/info" method="post">
+          <input type="submit" class="submit" value="{{loc['name']}}">
+          <input type="text" class="hidden" name="name" value="{{loc['name']}}">
+        </form>
+      </div>
+    </div>
+    <br> 
+  {% endfor %}
+  <script type="text/javascript">
+    let map = new google.maps.Map(document.getElementById("map_center"), {
+      zoom: 13,
+      center: new google.maps.LatLng(39.915119,116.403963),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+    const markers = []
+    {% for loc in locs %}
+
+    //Add marker to each location of the old towns
+        marker = new google.maps.Marker({
+        position: { lat: {{ loc["lat"] }}, lng: {{ loc["lng"] }} },
+        url: "{{loc['url']}}",
+        map: map
+      });
+      markers.push(marker)
+
+    {% endfor %}
+    for(let marker in markers)
+    {
+        google.maps.event.addListener(markers[marker], 'click', function() {
+        window.location.href = markers[marker].url;
+      });
+    }
+  </script>
+{% endblock %}
+
+

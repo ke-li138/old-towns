@@ -1,0 +1,94 @@
+.margin_left
+{
+    margin-left: 10px;
+}
+
+.margin_right
+{
+    margin-right: 10px;
+}
+
+.margin_medium
+{
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.div_large
+{
+    height: 600px;
+    width: 95%;
+    margin: 0 auto;
+    /* The div of the large picture or map is at the center of page */
+}
+
+.gather_div_small
+{
+    width: 100%;
+    height: 300px;
+    /*The div that contains two small divs */
+}
+
+
+.div_small
+{
+    height: 300px;
+    width: 30%;
+    float: left;
+}
+
+.div_medium
+{
+    height: 600px;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.pic
+{
+    height: 100%;
+    width: 100%;
+}
+
+
+.pic_text
+{
+    line-height: 200px;
+    float: left;
+    display: table-cell;
+    vertical-align: middle;
+    /*The text around the small maps are at the center of the div*/
+}
+
+.hidden
+{
+    visibility: hidden;
+}
+
+.submit
+{
+    border:0;
+    background-color: #ffffff
+}
+
+.large
+{
+    font-size: large;
+}
+
+.small
+{
+    font-size: small;
+}
+
+.center
+{
+    text-align: center;
+}
+
+.add_form
+{
+    width:800px;
+    height:30px;
+}
+

@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Add 
+{% endblock %}
+
+{% block main %}
+    <h1 class="margin_left">Add And Sign Up</h1>
+    <hr>
+    <form method="POST" action="/Me/add" enctype="multipart/form-data">
+      <p>
+        <select name="type">
+          <option disabled selected>Type</option>
+          <option value="OldTowns">Old Towns</option>
+          <option value="Snacks">Snacks</option>
+          <option value="Crafts">Crafts</option>
+        </select>
+      </p>
+      <p><input type="text" name="name" class="add_form" placeholder="*Please Enter The Name Of Your Blog"></p>
+      <p><input type='text' name="lat" class="add_form" placeholder="If Blogging For Old Towns, Please Enter The Latitude Of The Town"></p>
+      <p><input type='text' name="lng" class="add_form" placeholder="If Blogging For Old Towns, Please Enter The Longitude Of The Town"></p>
+      <p><input type='text' name="intro" class="add_form" placeholder="*Please Add A Short Introduction To Your Blogging"></p>
+      <p><input type="file" name="pic" accept="image/*" placeholder="*Please Post A Picture For Your Blogging (Only One)"></p>
+      <p><input type="submit" value="Submit"></p>
+    </form>
+    <p>Please choose a picturem and only one picture in the Choose File section. Picture and name are necessary to post things.
+      Latitude and Blogging are necessary if you want to blog for old towns. 
+       You could post anything interesting in Beijing, even your family recipes or stories!</p>
+    <script>
+      {% if success %}
+        alert("{{message}}");
+      {% endif %}
+    </script>
+{% endblock %}

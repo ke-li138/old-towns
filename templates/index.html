@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Homepage  
+{% endblock %}
+
+{% block main %}
+<h1 class="margin_left">This is Beijing!</h1>
+<hr>
+<div class="div_large center">
+  <img src="../static/4.jpeg", class="pic">
+</div>
+<hr>
+<div class="gather_div_small">
+  <div id="OldTowns" class="div_small margin_left"></div>
+  <div class="pic_text margin_left large">
+    <a href="/OldTowns"><strong>Old Towns</strong></a>
+  </div>
+</div>
+<br>
+<div class="gather_div_small">
+  <div class="div_small margin_left">
+    <img src="../static/images/Snacks/Haws.jpg", class="pic">
+  </div>
+  <div class="pic_text margin_left large">
+    <a href="/Snacks"><strong>Snacks</strong></a>
+  </div>
+</div>
+<br>
+<div class="gather_div_small">
+  <div class="div_small margin_left">
+    <img src="../static/images/Crafts/Mud_Sculpture.jpg", class="pic">
+  </div>
+  <div class="pic_text margin_left large">
+    <a href="/Crafts"><strong>Crafts</strong></a>
+  </div>
+</div> 
+<script>
+  let map = new google.maps.Map(document.getElementById("OldTowns"), {
+    zoom: 11,
+    center: new google.maps.LatLng(39.915119,116.403963),
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+  const markers = []
+  {% for loc in locs %}
+      marker = new google.maps.Marker({
+      position: { lat: {{ loc["lat"] }}, lng: {{ loc["lng"] }} },
+      url: "{{loc['url']}}",
+      map: map
+    });
+    markers.push(marker)
+  {% endfor %}
+  for(let marker in markers)
+  {
+      google.maps.event.addListener(markers[marker], 'click', function() {
+      window.location.href = markers[marker].url;
+    });
+  }
+</script>
+{% endblock %}

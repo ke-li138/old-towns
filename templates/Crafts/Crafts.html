@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Crafts  
+{% endblock %}
+
+{% block main %}
+  <h1 class="margin_left">Crafts</h1>
+  <hr>
+  <div class="div_large center">
+    <img src="../../static/images/Crafts/Fireworks.jpeg", class="pic">
+  </div>
+  <hr>
+  {% for loc in locs %}
+    <div class="gather_div_small margin_left">
+      <div class="div_small margin_left">
+        <img src="{{loc['pic']}}" class="pic">
+      </div>
+      <div class="pic_text margin_left large">
+        <form action="/Crafts/info" method="post">
+          <input type="submit" class="submit" value="{{loc['name']}}">
+          <input type="text" class="hidden" name="name" value="{{loc['name']}}">
+        </form>
+      </div>
+    </div>
+    <br> 
+  {% endfor %}
+{% endblock %}

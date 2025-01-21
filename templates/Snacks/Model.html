@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+{{loc['name']}}  
+{% endblock %}
+
+{% block main %}
+<h1 class="margin_left">{{loc['name']}}</h1>
+<div class="center div_medium">
+  <img src="{{loc['pic']}}", class="pic">
+</div>
+<br>
+<div class="margin_medium">
+  <p>{{loc['intro']}}</p>
+{% endblock %}
